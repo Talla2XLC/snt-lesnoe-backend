@@ -2,14 +2,6 @@ import mysql from 'mysql';
 
 export default class DB {
   connection;
-  // connection = mysql.createConnection({
-  //   host     : 'mysql.hosting.nic.ru',
-  //   port: 3306,
-  //   user     : 'snt2570560_mysql',
-  //   password : 'ms5:oHTA',
-  //   database : 'snt2570560_db',
-  //   charset : 'UTF8'
-  // });
 
   constructor() {
   }
@@ -17,12 +9,12 @@ export default class DB {
   connect() {
     return new Promise((resolve, reject) => {
       this.connection = mysql.createConnection({
-        host     : 'mysql.hosting.nic.ru',
-        port: 3306,
-        user     : 'snt2570560_mysql',
-        password : 'ms5:oHTA',
-        database : 'snt2570560_db',
-        charset : 'UTF8_GENERAL_CI'
+        host      : process.env.HOST,
+        port      : process.env.PORT,
+        user      : process.env.USER,
+        password  : process.env.PASSWORD,
+        database  : process.env.DATABASE,
+        charset   : 'UTF8_GENERAL_CI'
       });
 
       this.connection.connect(err => {
