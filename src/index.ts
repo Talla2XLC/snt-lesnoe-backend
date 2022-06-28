@@ -35,9 +35,9 @@ app.get('/debtors', async (request, response) => {
     response.json(debtors);
 
     const disconnectingResult = await db.disconnect();
-    console.log('connectingResult:', disconnectingResult);
+    console.log('disconnectingResult:', disconnectingResult);
   } catch (err) {
-    console.log('err:', err);
+    console.log('Error during getDebtors:', err);
   }
 });
 
@@ -46,16 +46,16 @@ app.post('/', async (request, response) => {
     const connectingResult = await db.connect();
     console.log('connectingResult:', connectingResult);
 
-    const addResult = await db.addDebtor();
-    console.log('addResult:', addResult);
+    const addDebtorResult = await db.addDebtor();
+    console.log('addResult:', addDebtorResult);
 
     // response.json({debtors});
-    response.json(addResult);
+    response.json(addDebtorResult);
 
     const disconnectingResult = await db.disconnect();
-    console.log('connectingResult:', disconnectingResult);
+    console.log('disconnectingResult:', disconnectingResult);
   } catch (err) {
-    console.log('err:', err);
+    console.log('Error during addDebtor:', err);
   }
 });
 
