@@ -41,6 +41,11 @@ app.get('/debtors', async (request, response) => {
   }
 });
 
+app.delete('/debtors', (request, response) => {
+  console.log('delete request:', request.query.id)
+  response.json({"response": "ok"});
+})
+
 app.post('/', async (request, response) => {
   try {
     const connectingResult = await db.connect();

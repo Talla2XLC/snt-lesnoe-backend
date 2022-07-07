@@ -60,4 +60,16 @@ export default class DB {
       });
     })
   }
+
+  deleteDebtor(debtorId) {
+    return new Promise((resolve, reject) => {
+      const QUERY = "DELETE FROM `debtors` WHERE `debtors`.`id_debtor` = " + debtorId;
+      this.connection.query(QUERY, (err, rows, fields) => {
+        console.log('Delete Debtors err:', err)
+        console.log('Delete Debtors rows:', rows)
+        if (err) reject(err);
+        resolve(rows)
+      });
+    })
+  }
 }
