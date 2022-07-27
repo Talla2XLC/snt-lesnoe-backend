@@ -29,7 +29,6 @@ app.get('/debtors', async (request, response) => {
     console.log('connectingResult:', connectingResult);
 
     const debtors = await db.getDebtors();
-    console.log('debtors:', debtors);
 
     // response.json({debtors});
     response.json(debtors);
