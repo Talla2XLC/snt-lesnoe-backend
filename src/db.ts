@@ -27,13 +27,14 @@ export default class DB {
     })
   }
 
-  getDebtors() {
-    return new Promise(async (resolve, reject) => {
-      return this.connection.query('SELECT * FROM `debtors`', async (err, rows, fields) => {
-        if (err) reject(err);
-        await setTimeout(() => {}, 3000)
-        resolve(rows);
-      });
+  async getDebtors() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        return this.connection.query('SELECT * FROM `debtors`', (err, rows, fields) => {
+          if (err) reject(err);
+          resolve(rows);
+        });
+      }, 3000);
     })
   }
 
